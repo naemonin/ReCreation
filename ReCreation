@@ -1,0 +1,170 @@
+00000	0	black Beauty-birth Poems-birth Childs-birth time 0 year 0000 mounth 00 day 0 hour 00H00M00S frame 0 
+00001	1 LOVE-birth Hearth-birth Music-birth Beat-Birth  Story-birth Movie-birth infrarouge time 1 year0001 mounth-January-JANVIER 01 Day Moonday LUNDI 1 hour 00H00M01S Mframe 1	11111011 251 rouge
+00010	2	jaune mounth-FEVRIER 02 MARDI 2 
+00011	3	11010000 208 vert MARS 03 MERCREDI 3
+00100	4	cyan AVRIL 04 JEUDI 4
+00101	5	10010111 151 blue MAI 05 VENDREDI 5
+00110	6	blu JUIN 06 SAMEDI 6 
+00111	7	ultra violet 255 , 0 , 255 violet JUILLET 07 DIMANCHE 7 
+0000100010000110001000010100110001111111 blanc 8  SUNbirth  color  AOUT 08 LUNDI 8 frame 8 
+01001	012345678 9 NatureBirth SEPTEMBRE 09 MARDI 10 frame 9
+OCTOBER 10 
+NOVEMBER 11
+mounth-DECEMBER 12
+
+one : 44 87 109A110 123 UN 1 frame 44
+two : 1  2    3A4   5   DEUX 2 framz 
+three : 2  3    4A5   6 TROIS 3
+four : 12 23  45B56  67 QUATRES 4
+five : 123 456 7C8   9  CINQ 5
+six : A  B    C44D  E   SIX 6
+seven :      0007000    SEPT 7
+eight :       A8AC8D8E  HUIT 8
+nine : 101 304 05    F  NEUF 9
+ten :               AF  DIX 10
+                        ONZE 11
+                        DOUZE 12
+
+twenty one : 8ABCDEFGHIJKLMNOPQRSTUVWXYZ LOVE ? VINGT-ET-UN 21 siècle year 2000 day 1 frame ?
+
+A	01000001	a	01100001
+B	01000010	b	01100010
+C	01000011	c	01100011
+D	01000100	d	01100100
+E	01000101	e	01100101
+F	01000110	f	01100110
+G	01000111	g	01100111
+H	01001000	h	01101000
+I	01001001	i	01101001
+J	01001010	j	01101010
+K	01001011	k	01101011
+L	01001100	l	01101100
+M	01001101	m	01101101
+N	01001110	n	01101110
+O	01001111	o	01101111
+P	01010000	p	01110000
+Q	01010001	q	01110001
+R	01010010	r	01110010
+S	01010011	s	01110011
+T	01010100	t	01110100
+U	01010101	u	01110101
+V	01010110	v	01110110
+W	01010111	w	01110111
+X	01011000	x	01111000
+Y	01011001	y	01111001
+Z	01011010	z	01111010
+import bpy
+import math
+# Delete default cube
+bpy.ops.object.select_all(action='DESELECT')
+if bpy.context.object:
+ bpy.context.object.select_set(True)
+ bpy.ops.object.delete()
+# Create a ring (Torus)
+bpy.ops.mesh.primitive_torus_add(
+ major_radius=1, # Half of the x dimension (2.05m / 2)
+ minor_radius=0.04, # Half of the z dimension (0.0565m / 2)
+ location=(0, 0, 0)
+)
+
+
+# Get the current object (Torus)
+ring = bpy.context.object
+# Set initial transformation (frame 0)
+ring.location = (0, 0, 0)
+ring.rotation_euler = (0, 0, 0)
+ring.scale = (0, 0, 0)
+# Insert keyframe for initial state
+ring.keyframe_insert(data_path="location", frame=0)
+ring.keyframe_insert(data_path="rotation_euler", frame=0)
+ring.keyframe_insert(data_path="scale", frame=1)
+# Set final transformation (frame 360)
+ring.location = (0, 0, 0)
+ring.rotation_euler = (
+ math.radians(360), # Rotation around X axis
+ math.radians(720), # Rotation around Y axis
+ math.radians(1080) # Rotation around Z axis
+)
+ring.scale = (1, 1, 1)
+# Insert keyframe for final state
+ring.keyframe_insert(data_path="location", frame=360)
+ring.keyframe_insert(data_path="rotation_euler", frame=360)
+ring.keyframe_insert(data_path="scale", frame=360)
+# Set up the timeline
+bpy.context.scene.frame_start = 0
+bpy.context.scene.frame_end = 360
+print("Animation created from frame 0 to 360!")
+import bpy
+import math
+
+# Create a cylinder
+bpy.ops.mesh.primitive_cylinder_add(
+ radius=0.00, # Radius for the x and y dimensions
+ depth=2, # Depth for the z dimension
+ location=(0, 0, 0)
+)
+ # Get the current object (cylinder)
+cylinder = bpy.context.object
+# Set scale
+cylinder.scale = (1, 1, 1)
+# Set rotation in degrees (convert to radians)
+cylinder.rotation_euler = (
+ math.radians(540), # Rotation around X axis
+ math.radians(2160), # Rotation around Y axis
+ math.radians(3240) # Rotation around Z axis
+)
+# Set location
+cylinder.location = (0, 0, 0)
+# Apply transformations
+bpy.ops.object.transform_apply(location=False, rotation=True, scale=True)
+print("Cylinder created with the desired properties!")
+
+# Create a cylinder
+bpy.ops.mesh.primitive_cylinder_add(
+ radius=0.04, # Radius for the x and y dimensions
+ depth=2, # Depth for the z dimension
+ location=(0, 0, 0)
+)
+# Get the current object (cylinder)
+cylinder = bpy.context.object
+# Set initial transformation (frame 0)
+cylinder.scale = (0, 0, 0)
+cylinder.rotation_euler = (0, 0, 0)
+# Insert keyframes for initial state
+cylinder.keyframe_insert(data_path="scale", frame=0)
+cylinder.keyframe_insert(data_path="rotation_euler", frame=0)
+# Set final transformation (frame 360)
+cylinder.scale = (1, 1, 1)
+cylinder.rotation_euler = (
+ math.radians(540), # Rotation around X axis
+ math.radians(2160), # Rotation around Y axis
+ math.radians(3240) # Rotation around Z axis
+)
+# Insert keyframes for final state
+cylinder.keyframe_insert(data_path="scale", frame=360)
+cylinder.keyframe_insert(data_path="rotation_euler", frame=360)
+# Set up the timeline
+bpy.context.scene.frame_start = 0
+bpy.context.scene.frame_end = 360
+print("Cylinder animation created from frame 0 to 360!")
+# image (frames) = (44, 87, 109, 110, 123) 
+
+one : 44 87 109A110 123
+two : 1  2    3A4   5
+three : 2  3    4A5   6
+four : 12 23  45B56  67
+five : 123 456 7C8   9
+six : A  B    C44D  E
+seven :      0007000
+eight :       A8AC8D8E
+nine : 101 304 05    F
+ten :               AF
+
+twenty one : 8ABCDEFGHIJKLMNOPQRSTUVWXYZ LOVE?
+	0	noir
+	8 white SUN
+ 2024 the 12 september
+
+Bouddha, Jesus, Allah, and Alls are my friends :D [smiling] haha! [laughing]
+I LOVE YOU With a Hearth Beat And a Beautyful Music !
+Benjamin Naemonin ( Benjamin Griveau Michel Guy )
